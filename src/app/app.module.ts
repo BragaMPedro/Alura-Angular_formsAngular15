@@ -7,6 +7,7 @@ import { SucessoCadastroComponent } from './components/sucesso-cadastro/sucesso-
 import { CadastroComponent } from './components/cadastro/cadastro.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { FooterComponent } from './components/footer/footer.component';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule
   ],
   providers: [],

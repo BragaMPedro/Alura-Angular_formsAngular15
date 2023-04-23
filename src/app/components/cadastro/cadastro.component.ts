@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cadastro',
@@ -6,8 +8,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./cadastro.component.css'],
 })
 export class CadastroComponent {
-  
-  cadastrar() {
-    console.log('Formulário enviado');
+  constructor(private router: Router) {}
+
+  cadastrar(form: NgForm) {
+    form.valid
+      ? this.router.navigate(['sucesso'])
+      : alert('Formulário inválido');
+    console.log(form);
   }
 }
