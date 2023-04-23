@@ -14,6 +14,6 @@ export class CadastroComponent {
     form.valid
       ? this.router.navigate(['sucesso'])
       : alert('Formulário inválido');
-    console.log(form);
+    console.log(form.controls);
   }
 }
