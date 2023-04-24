@@ -50,7 +50,12 @@
   border: none;
   color: var(--branco);
   cursor: pointer;
-  float: right;
+  float: center;
+}
+
+.formulario__botao:disabled {
+  background: var(--cinza);
+  cursor: default;
 }
 
 .formulario__erro {
