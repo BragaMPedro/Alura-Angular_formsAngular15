@@ -18,25 +18,17 @@
         ngModel
         required
         minlength="2"
+        #nome="ngModel"
       />
-      <div
-        *ngIf="
-          (f.controls['nome']?.invalid && f.controls['nome']?.touched) ||
-          f.controls['nome']?.dirty
-        "
-      >
-        <span
-          class="erro__texto"
-          *ngIf="f.controls['nome']?.errors?.['required']"
-        >
-          Este campo deve ser preenchido.
-        </span>
-        <span
-          class="erro__texto"
-          *ngIf="f.controls['nome']?.errors?.['minlength']"
-        >
-          Este campo deve ter no mínimo 2 caracteres.
-        </span>
+      <div *ngIf="(nome?.invalid && nome?.touched) || nome?.dirty">
+        <app-mensagem
+          *ngIf="nome?.errors?.['required']"
+          mensagem="Este campo deve ser preenchido."
+        />
+        <app-mensagem
+          *ngIf="nome?.errors?.['minlength']"
+          mensagem="Este campo deve ter no mínimo 2 caracteres."
+        />
       </div>
     </div>
     <!-- DATA DE NASCIMENTO -->
@@ -63,26 +55,18 @@
           ngModel
           required
           pattern="(\(?\d{2}\)?\s?)(\d{5}\-?\d{4})"
+          #telefone="ngModel"
         />
       </div>
-      <div
-        *ngIf="
-          (f.controls['telefone']?.invalid && f.controls['telefone']?.touched) ||
-          f.controls['telefone']?.dirty
-        "
-      >
-        <span
-          class="erro__texto"
-          *ngIf="f.controls['telefone']?.errors?.['required']"
-        >
-          Este campo deve ser preenchido.
-        </span>
-        <span
-          class="erro__texto"
-          *ngIf="f.controls['telefone']?.errors?.['pattern']"
-        >
-          Este campo deve possuir apenas números, e 11 dígitos.
-        </span>
+      <div *ngIf="(telefone?.invalid && telefone?.touched) || telefone?.dirty">
+        <app-mensagem
+          *ngIf="telefone?.errors?.['required']"
+          mensagem="Este campo deve ser preenchido."
+        />
+        <app-mensagem
+          *ngIf="telefone?.errors?.['pattern']"
+          mensagem="Este campo deve possuir apenas números, e 11 dígitos."
+        />
       </div>
     </div>
     <!-- EMAIL -->
@@ -96,31 +80,22 @@
         ngModel
         required
         pattern="^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$"
+        #email="ngModel"
       />
       <!-- pattern = Padrão Regex de email-->
-      <div
-        *ngIf="
-          (f.controls['email']?.invalid && f.controls['email']?.touched) ||
-          f.controls['email']?.dirty
-        "
-      >
-        <span
-          class="erro__texto"
-          *ngIf="f.controls['email']?.errors?.['required']"
-        >
-          Este campo deve ser preenchido.
-        </span>
-        <span
-          class="erro__texto"
-          *ngIf="f.controls['email']?.errors?.['pattern']"
-        >
-          Este campo deve ser um endereço de email válido.
-        </span>
+      <div *ngIf="(email?.invalid && email?.touched) || email?.dirty">
+        <app-mensagem
+          mensagem="Este campo deve ser preenchido."
+          ngIf="email?.errors?.['required']"
+        />
+        <app-mensagem
+          mensagem="Este campo deve ser um endereço de email válido."
+          ngIf="email?.errors?.['pattern']"
+        />
       </div>
     </div>
 
     <h3 class="principal__subtitulo">Endereço</h3>
-
     <div class="formulario__campo">
       <label class="campo__etiqueta" for="cep">CEP</label>
       <input name="cep" id="cep" class="campo__escrita" />

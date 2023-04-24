@@ -8,6 +8,7 @@ import { CadastroComponent } from './components/cadastro/cadastro.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { FormsModule } from '@angular/forms';
+import { MensagemComponent } from './components/mensagem/mensagem.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { FormsModule } from '@angular/forms';
     SucessoCadastroComponent,
     CadastroComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    MensagemComponent
   ],
   imports: [
     BrowserModule,
