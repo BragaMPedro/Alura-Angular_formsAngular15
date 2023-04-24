@@ -9,6 +9,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { FormsModule } from '@angular/forms';
 import { MensagemComponent } from './components/mensagem/mensagem.component';
+import { MaioridadeDirective } from './directives/maioridade.directive';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { MensagemComponent } from './components/mensagem/mensagem.component';
     CadastroComponent,
     HeaderComponent,
     FooterComponent,
-    MensagemComponent
+    MensagemComponent,
+    MaioridadeDirective
   ],
   imports: [
     BrowserModule,
