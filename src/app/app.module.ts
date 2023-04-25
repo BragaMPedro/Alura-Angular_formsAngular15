@@ -11,6 +11,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { FormsModule } from '@angular/forms';
 import { MensagemComponent } from './components/mensagem/mensagem.component';
 import { MaioridadeDirective } from './directives/maioridade.directive';
+import { ValidandoCepDirective } from './directives/validando-cep.directive';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { MaioridadeDirective } from './directives/maioridade.directive';
     HeaderComponent,
     FooterComponent,
     MensagemComponent,
-    MaioridadeDirective
+    MaioridadeDirective,
+    ValidandoCepDirective
   ],
   imports: [
     BrowserModule,

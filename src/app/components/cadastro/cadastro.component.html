@@ -125,7 +125,8 @@
         pattern="^(\d{5}\-?)(\d{3})$"
         minlength="8"
         maxlength="9"
-        (blur)="consultaCep(cep)"
+        validadorCep
+        (blur)="consultaCep(cep, f)"
       />
       <div *ngIf="(cep?.invalid && cep?.touched) || cep?.dirty">
         <app-mensagem
@@ -137,6 +138,10 @@
           *ngIf="cep?.errors?.['pattern']"
         />
       </div>
+      <app-mensagem
+        mensagem="CEP inexistente"
+        *ngIf="cep?.errors?.['validadorCep']"
+      />
     </div>
 
     <div class="formulario__campo">
@@ -148,7 +153,6 @@
         required
         ngModel
         #endereco="ngModel"
-        [value]="viaCep ? viaCep.logradouro : ''"
       />
       <div *ngIf="(endereco?.invalid && endereco?.touched) || endereco?.dirty">
         <app-mensagem
@@ -188,7 +192,6 @@
           class="campo__escrita"
           ngModel
           #complemento="ngModel"
-          [value]="viaCep && viaCep.complemento.length > 0 ? viaCep.complemento : ''"
         />
       </div>
     </div>
@@ -201,7 +204,6 @@
         ngModel
         #bairro="ngModel"
         required
-        [value]="viaCep ? viaCep.bairro : ''"
       />
       <div *ngIf="(bairro?.invalid && bairro?.touched) || bairro?.dirty">
         <app-mensagem
@@ -220,7 +222,6 @@
           ngModel
           #cidade="ngModel"
           required
-          [value]="viaCep ? viaCep.localidade : ''"
         />
         <div *ngIf="(cidade?.invalid && cidade?.touched) || cidade?.dirty">
           <app-mensagem
@@ -239,7 +240,6 @@
           ngModel
           #estado="ngModel"
           required
-          [value]="viaCep ? viaCep.uf : ''"
         >
           <option value="AC">Acre</option>
           <option value="AL">Alagoas</option>
@@ -278,6 +278,6 @@
         </div>
       </div>
     </div>
-    <button type="submit" class="formulario__botao" >Enviar formulário</button>
+    <button type="submit" class="formulario__botao">Enviar formulário</button>
   </form>
 </main>

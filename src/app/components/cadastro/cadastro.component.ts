@@ -10,7 +10,6 @@ import { ViaCep } from './viaCepModel';
   styleUrls: ['./cadastro.component.css'],
 })
 export class CadastroComponent {
-
   viaCep!: ViaCep;
 
   constructor(private router: Router, private service: ConsultaCepService) {}
@@ -20,16 +19,30 @@ export class CadastroComponent {
       ? this.router.navigate(['sucesso'])
       : alert('Formulário inválido');
     console.log(form.controls);
-  };
-  
-  consultaCep(input: NgModel) {
+  }
+
+  consultaCep(input: NgModel, form: NgForm) {
     const cep = input.value;
-    
-    return this.service.getConsultaCep(cep)
-    .subscribe(res =>{
-      res.erro ? console.log(res) : this.viaCep = new ViaCep(res);
-      console.log(res);
-      
+
+    if (cep != '') {
+      this.service.getConsultaCep(cep).subscribe((res) => {
+        if (res.erro) {
+          console.log(res);
+        } else {
+          this.viaCep = new ViaCep(res);
+          this.popularEndereco(this.viaCep, form);
+        }
+      });
+    }
+  }
+
+  popularEndereco(dados: ViaCep, f: NgForm) {
+    f.form.patchValue({
+      endereco: dados.logradouro,
+      complemento: dados.complemento,
+      bairro: dados.bairro,
+      cidade: dados.localidade,
+      estado: dados.uf,
     });
-  };
+  }
 }
