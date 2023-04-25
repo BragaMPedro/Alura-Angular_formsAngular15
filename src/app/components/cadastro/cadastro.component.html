@@ -137,11 +137,11 @@
           mensagem="O CEP dígitado deve seguir o formato '00000-000' "
           *ngIf="cep?.errors?.['pattern']"
         />
+        <app-mensagem
+          mensagem="CEP inexistente"
+          *ngIf="cep?.errors?.['validadorCep']"
+        />
       </div>
-      <app-mensagem
-        mensagem="CEP inexistente"
-        *ngIf="cep?.errors?.['validadorCep']"
-      />
     </div>
 
     <div class="formulario__campo">
@@ -278,6 +278,6 @@
         </div>
       </div>
     </div>
-    <button type="submit" class="formulario__botao">Enviar formulário</button>
+    <button type="submit" class="formulario__botao" [disabled]="!f.valid" >Enviar formulário</button>
   </form>
 </main>
